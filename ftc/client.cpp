@@ -26,7 +26,12 @@ Client::~Client()
 
 void Client::on_connected() {
     databuf.prepend(prefix.toLatin1());
-    qDebug() << "Wrote:" << sock->write(databuf.data(), databuf.size());
+    char *p = databuf.data();
+
+    for (int i=0; i<databuf.size(); i+=16) {
+        sock->write(p, 16);
+        p += 16;
+    }
     sock->close();
 }
 

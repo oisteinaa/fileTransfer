@@ -39,15 +39,35 @@ void TCPServer::on_ready_read() {
 }
 
 void TCPServer::on_disconnected() {
+    float t = (float) timer.elapsed();
     QTcpSocket *s = static_cast<QTcpSocket *>(sender());
 
-    QString info = databuf.left(databuf.indexOf("***"));
+    int datastart = databuf.indexOf("***");
+    QString info = databuf.left(datastart);
+    QString fn   = info.section(";", 1, 1);
     //QByteArray data = databuf.right(databuf.size() - databuf.indexOf("***") - 3);
 
     qDebug() << "Info:" << info;
     qDebug() << "Disconnected" << s->peerAddress().toString()
              << "bytes read:" << databuf.size()/1000 << "kByte"
              << "duration:" << timer.elapsed() << "sec"
-             << "speed:" << databuf.size() / (float) timer.elapsed() << "kByte/sec";
+             << "speed:" << databuf.size() / t << "kByte/sec";
+
+    char *p = databuf.data();
+    p += datastart + 3;
+    writeFile(fn, p, databuf.size() - datastart - 3);
+}
+
+void TCPServer::writeFile(QString fn, char *p, int nbytes) {
+    QFile fd(fn);
+
+    if (!(fd.open(QFile::WriteOnly))) {
+        qCritical() << "Error opening:" << fd.fileName();
+        return;
+    } else
+        qDebug() << "Write file:" << fd.fileName();
+
+    fd.write(p, nbytes);
+    fd.close();
 }
 

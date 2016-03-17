@@ -6,6 +6,7 @@
 #include <QTcpSocket>
 #include <QByteArray>
 #include <QTime>
+#include <QFile>
 
 class TCPServer : public QTcpServer
 {
@@ -23,6 +24,8 @@ public slots:
 private:
     QByteArray databuf;
     QTime timer;
+
+    void writeFile(QString fn, char *p, int nbytes);
 };
 
 #endif // TCPSERVER_H
