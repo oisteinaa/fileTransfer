@@ -28,9 +28,9 @@ void Client::on_connected() {
     databuf.prepend(prefix.toLatin1());
     char *p = databuf.data();
 
-    for (int i=0; i<databuf.size(); i+=16) {
-        sock->write(p, 16);
-        p += 16;
+    for (int i=0; i<databuf.size(); i+=512) {
+        sock->write(p, 512);
+        p += 512;
     }
     sock->close();
 }

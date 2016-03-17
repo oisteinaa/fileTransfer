@@ -33,7 +33,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = fileTransferServer1.0.0
-DISTDIR = /home/oistein/Programming/PROFOCUS/DIV/fileTransferServer/.tmp/fileTransferServer1.0.0
+DISTDIR = /home/oistein/Programming/PROFOCUS/DIV/fileTransfer/fileTransferServer/.tmp/fileTransferServer1.0.0
 LINK          = g++
 LFLAGS        = -Wl,-rpath,/usr/local/Qt5.4.1/5.4/gcc_64 -Wl,-rpath,/usr/local/Qt5.4.1/5.4/gcc_64/lib
 LIBS          = $(SUBLIBS) -L/usr/local/Qt5.4.1/5.4/gcc_64/lib -lQt5Network -lQt5Core -lpthread 
@@ -557,8 +557,14 @@ moc_tcpserver.cpp: /usr/local/Qt5.4.1/5.4/gcc_64/include/QtCore/QObject \
 		/usr/local/Qt5.4.1/5.4/gcc_64/include/QtNetwork/qhostaddress.h \
 		/usr/local/Qt5.4.1/5.4/gcc_64/include/QtNetwork/QTcpSocket \
 		/usr/local/Qt5.4.1/5.4/gcc_64/include/QtNetwork/qtcpsocket.h \
+		/usr/local/Qt5.4.1/5.4/gcc_64/include/QtCore/QByteArray \
+		/usr/local/Qt5.4.1/5.4/gcc_64/include/QtCore/QTime \
+		/usr/local/Qt5.4.1/5.4/gcc_64/include/QtCore/qdatetime.h \
+		/usr/local/Qt5.4.1/5.4/gcc_64/include/QtCore/QFile \
+		/usr/local/Qt5.4.1/5.4/gcc_64/include/QtCore/qfile.h \
+		/usr/local/Qt5.4.1/5.4/gcc_64/include/QtCore/qfiledevice.h \
 		tcpserver.h
-	/usr/local/Qt5.4.1/5.4/gcc_64/bin/moc $(DEFINES) -I/usr/local/Qt5.4.1/5.4/gcc_64/mkspecs/linux-g++ -I/home/oistein/Programming/PROFOCUS/DIV/fileTransferServer -I/usr/local/Qt5.4.1/5.4/gcc_64/include -I/usr/local/Qt5.4.1/5.4/gcc_64/include/QtNetwork -I/usr/local/Qt5.4.1/5.4/gcc_64/include/QtCore tcpserver.h -o moc_tcpserver.cpp
+	/usr/local/Qt5.4.1/5.4/gcc_64/bin/moc $(DEFINES) -I/usr/local/Qt5.4.1/5.4/gcc_64/mkspecs/linux-g++ -I/home/oistein/Programming/PROFOCUS/DIV/fileTransfer/fileTransferServer -I/usr/local/Qt5.4.1/5.4/gcc_64/include -I/usr/local/Qt5.4.1/5.4/gcc_64/include/QtNetwork -I/usr/local/Qt5.4.1/5.4/gcc_64/include/QtCore tcpserver.h -o moc_tcpserver.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -623,7 +629,38 @@ main.o: main.cpp /usr/local/Qt5.4.1/5.4/gcc_64/include/QtCore/QCoreApplication \
 		/usr/local/Qt5.4.1/5.4/gcc_64/include/QtCore/qcontainerfwd.h \
 		/usr/local/Qt5.4.1/5.4/gcc_64/include/QtCore/qisenum.h \
 		/usr/local/Qt5.4.1/5.4/gcc_64/include/QtCore/qobject_impl.h \
-		/usr/local/Qt5.4.1/5.4/gcc_64/include/QtCore/qeventloop.h
+		/usr/local/Qt5.4.1/5.4/gcc_64/include/QtCore/qeventloop.h \
+		tcpserver.h \
+		/usr/local/Qt5.4.1/5.4/gcc_64/include/QtCore/QObject \
+		/usr/local/Qt5.4.1/5.4/gcc_64/include/QtNetwork/QTcpServer \
+		/usr/local/Qt5.4.1/5.4/gcc_64/include/QtNetwork/qtcpserver.h \
+		/usr/local/Qt5.4.1/5.4/gcc_64/include/QtNetwork/qabstractsocket.h \
+		/usr/local/Qt5.4.1/5.4/gcc_64/include/QtCore/qiodevice.h \
+		/usr/local/Qt5.4.1/5.4/gcc_64/include/QtCore/qdebug.h \
+		/usr/local/Qt5.4.1/5.4/gcc_64/include/QtCore/qhash.h \
+		/usr/local/Qt5.4.1/5.4/gcc_64/include/QtCore/qpair.h \
+		/usr/local/Qt5.4.1/5.4/gcc_64/include/QtCore/qmap.h \
+		/usr/local/Qt5.4.1/5.4/gcc_64/include/QtCore/qtextstream.h \
+		/usr/local/Qt5.4.1/5.4/gcc_64/include/QtCore/qlocale.h \
+		/usr/local/Qt5.4.1/5.4/gcc_64/include/QtCore/qvariant.h \
+		/usr/local/Qt5.4.1/5.4/gcc_64/include/QtCore/qstringlist.h \
+		/usr/local/Qt5.4.1/5.4/gcc_64/include/QtCore/qdatastream.h \
+		/usr/local/Qt5.4.1/5.4/gcc_64/include/QtCore/qregexp.h \
+		/usr/local/Qt5.4.1/5.4/gcc_64/include/QtCore/qstringmatcher.h \
+		/usr/local/Qt5.4.1/5.4/gcc_64/include/QtCore/qshareddata.h \
+		/usr/local/Qt5.4.1/5.4/gcc_64/include/QtCore/qvector.h \
+		/usr/local/Qt5.4.1/5.4/gcc_64/include/QtCore/qpoint.h \
+		/usr/local/Qt5.4.1/5.4/gcc_64/include/QtCore/qset.h \
+		/usr/local/Qt5.4.1/5.4/gcc_64/include/QtCore/qcontiguouscache.h \
+		/usr/local/Qt5.4.1/5.4/gcc_64/include/QtNetwork/qhostaddress.h \
+		/usr/local/Qt5.4.1/5.4/gcc_64/include/QtNetwork/QTcpSocket \
+		/usr/local/Qt5.4.1/5.4/gcc_64/include/QtNetwork/qtcpsocket.h \
+		/usr/local/Qt5.4.1/5.4/gcc_64/include/QtCore/QByteArray \
+		/usr/local/Qt5.4.1/5.4/gcc_64/include/QtCore/QTime \
+		/usr/local/Qt5.4.1/5.4/gcc_64/include/QtCore/qdatetime.h \
+		/usr/local/Qt5.4.1/5.4/gcc_64/include/QtCore/QFile \
+		/usr/local/Qt5.4.1/5.4/gcc_64/include/QtCore/qfile.h \
+		/usr/local/Qt5.4.1/5.4/gcc_64/include/QtCore/qfiledevice.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
 tcpserver.o: tcpserver.cpp tcpserver.h \
@@ -699,7 +736,14 @@ tcpserver.o: tcpserver.cpp tcpserver.h \
 		/usr/local/Qt5.4.1/5.4/gcc_64/include/QtCore/qcontiguouscache.h \
 		/usr/local/Qt5.4.1/5.4/gcc_64/include/QtNetwork/qhostaddress.h \
 		/usr/local/Qt5.4.1/5.4/gcc_64/include/QtNetwork/QTcpSocket \
-		/usr/local/Qt5.4.1/5.4/gcc_64/include/QtNetwork/qtcpsocket.h
+		/usr/local/Qt5.4.1/5.4/gcc_64/include/QtNetwork/qtcpsocket.h \
+		/usr/local/Qt5.4.1/5.4/gcc_64/include/QtCore/QByteArray \
+		/usr/local/Qt5.4.1/5.4/gcc_64/include/QtCore/QTime \
+		/usr/local/Qt5.4.1/5.4/gcc_64/include/QtCore/qdatetime.h \
+		/usr/local/Qt5.4.1/5.4/gcc_64/include/QtCore/QFile \
+		/usr/local/Qt5.4.1/5.4/gcc_64/include/QtCore/qfile.h \
+		/usr/local/Qt5.4.1/5.4/gcc_64/include/QtCore/qfiledevice.h \
+		/usr/local/Qt5.4.1/5.4/gcc_64/include/QtCore/QDebug
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o tcpserver.o tcpserver.cpp
 
 moc_tcpserver.o: moc_tcpserver.cpp 

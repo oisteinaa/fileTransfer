@@ -1,5 +1,8 @@
 #include "tcpserver.h"
 
+#include <stdio.h>
+#include <unistd.h>
+
 #include <QDebug>
 
 TCPServer::TCPServer(QObject *parent) :
@@ -35,6 +38,8 @@ void TCPServer::on_ready_read() {
 
     while (s->bytesAvailable()) {
         databuf.append(s->readAll());
+        //printf("\rBytes: %i", databuf.size());
+        //fflush(stdout);
     }
 }
 
@@ -47,7 +52,7 @@ void TCPServer::on_disconnected() {
     QString fn   = info.section(";", 1, 1);
     //QByteArray data = databuf.right(databuf.size() - databuf.indexOf("***") - 3);
 
-    qDebug() << "Info:" << info;
+    qDebug() << "\nInfo:" << info;
     qDebug() << "Disconnected" << s->peerAddress().toString()
              << "bytes read:" << databuf.size()/1000 << "kByte"
              << "duration:" << timer.elapsed() << "sec"
